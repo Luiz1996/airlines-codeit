@@ -4,6 +4,7 @@ import br.com.codeitsolutions.airlines.model.TipoTripulante;
 import br.com.codeitsolutions.airlines.model.Tripulante;
 import br.com.codeitsolutions.airlines.controller.ViagemSmartFortwoController;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +28,12 @@ public class Main {
             }
             
             System.out.print("Deseja continuar? Sim[>=1]/Não[<1]\nR: ");
-            iniciaAirlines = in.nextInt();
+            
+            try{
+                iniciaAirlines = in.nextInt();
+            }catch(InputMismatchException e){
+                System.out.println("\nValor informado é inválido.\n\nPrograma encerrado!!!");
+            }
         }
         System.gc();
         System.out.println("\nFim de jogo!");

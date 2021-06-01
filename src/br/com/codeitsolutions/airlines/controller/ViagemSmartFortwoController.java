@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
  */
 public class ViagemSmartFortwoController {
     
+    private static TipoTripulante motoristaSmartFortwo;
+    private static TipoTripulante passageiroSmartFortwo;
+    
     public static void movimentaPassageiros(List<Tripulante> tripulacaoTerminal, List<Tripulante> tripulacaoAviao) {
         encontraPossiveisMotoristas(tripulacaoAviao, tripulacaoTerminal, "avião");
         encontraPossiveisPassageiros(tripulacaoAviao, tripulacaoTerminal);
@@ -59,6 +62,7 @@ public class ViagemSmartFortwoController {
         
         try{
             tripAux = motoristas.get(in.nextInt());
+            motoristaSmartFortwo = tripAux.getTpTripulante();
         }catch(IndexOutOfBoundsException ex){
             System.out.println("\nVocê digitou um índice inválido. Jogo será encerrado!\n");
             System.exit(1);
@@ -80,6 +84,7 @@ public class ViagemSmartFortwoController {
         
         try{
             tripAux = tripulacaoRemove.get(in.nextInt());
+            passageiroSmartFortwo = tripAux.getTpTripulante();
         }catch(IndexOutOfBoundsException ex){
             System.out.println("\nVocê digitou um índice inválido. Jogo será encerrado!\n");
             System.exit(1);
@@ -143,7 +148,7 @@ public class ViagemSmartFortwoController {
         boolean oficialEChefeTerminal = validaOficialEChefeSozinhos(tripulacaoTerminal);
         boolean oficialEChefeAviao = validaOficialEChefeSozinhos(tripulacaoAviao);
         
-        if(!oficialEChefeTerminal || !oficialEChefeAviao){
+        if(!oficialEChefeTerminal || !oficialEChefeAviao || (motoristaSmartFortwo.equals(TipoTripulante.CHEFE) && passageiroSmartFortwo.equals(TipoTripulante.OFICIAL))){
             System.out.println("\n\nOh não!!! Você deixou Oficial(is) e Chefe de Serviços sozinhos... GAME OVER!\n");
             tripulacaoAviao.addAll(tripulacaoTerminal);
             tripulacaoTerminal = new ArrayList<>();
@@ -170,7 +175,7 @@ public class ViagemSmartFortwoController {
         boolean comissariaEPilotoTerminal = validaComissariaEPilotoSozinhos(tripulacaoTerminal);
         boolean comissariaEPilotoAviao = validaComissariaEPilotoSozinhos(tripulacaoAviao);
         
-        if(!comissariaEPilotoTerminal || !comissariaEPilotoAviao){
+        if(!comissariaEPilotoTerminal || !comissariaEPilotoAviao || (motoristaSmartFortwo.equals(TipoTripulante.PILOTO) && passageiroSmartFortwo.equals(TipoTripulante.COMISSARIA))){
             System.out.println("\n\nOh não!!! Você deixou Comissária(s) e Piloto de Serviços sozinhos... GAME OVER!\n");
             tripulacaoAviao.addAll(tripulacaoTerminal);
             tripulacaoTerminal = new ArrayList<>();

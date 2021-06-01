@@ -60,7 +60,7 @@ Casos de Falha(Volta ao terminal):
 		2, 2, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 2, 2
 			
 	- 1 oficial e 1 chefe juntos:
-		1, 2, 0, 1, 3, 0, 1, 3, 0, 1, 3, 0, 0, 0
+		1, 2, 0, 1, 3, 0, 2, 4, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1
 			
 	- 2 oficiais e 1 chefe juntos:	
 		2, 5, 0, 2, 5, 0, 1, 4, 0, 0, 0, 0, 1, 2, 1
